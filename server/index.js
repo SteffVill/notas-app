@@ -6,7 +6,6 @@ const Nota = require('./models/Nota');
 require('dotenv').config();
 
 const app = express();
-
 app.use(cors());
 app.use(express.json());
 app.use('/api/notas', notaRoutes);
