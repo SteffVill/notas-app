@@ -1,7 +1,8 @@
-const notaRoutes = require('./routes/notaRoutes');
 const express = require('express');
 const cors = require('cors');
 const db = require('./config/db');
+const notaRoutes = require('./routes/notaRoutes');
+const Nota = require('./models/Nota');
 require('dotenv').config();
 
 const app = express();
@@ -15,7 +16,8 @@ const startServer = async () => {
     try {
         await db.authenticate();
         console.log('✅ Conexión a MySQL (XAMPP) establecida.');
-        
+        await db.sync(); 
+        console.log('📊 Tablas sincronizadas.');        
         app.listen(PORT, () => {
             console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
         });
