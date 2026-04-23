@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const db = require('../config/db'); 
-
+const Estudiante = require('./Estudiante');
 const Nota = db.define('Nota', {
     titulo: {
         type: DataTypes.STRING,
@@ -13,5 +13,8 @@ const Nota = db.define('Nota', {
 }, {
     timestamps: true 
 });
+
+Estudiante.hasMany(Nota, { foreignKey: 'estudianteId', onDelete: 'CASCADE' });
+Nota.belongsTo(Estudiante, { foreignKey: 'estudianteId' });
 
 module.exports = Nota;
