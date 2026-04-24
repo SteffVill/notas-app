@@ -1,17 +1,38 @@
 const { DataTypes } = require('sequelize');
 const db = require('../config/db'); 
 const Estudiante = require('./Estudiante');
-const Nota = db.define('Nota', {
-    titulo: {
-        type: DataTypes.STRING,
+
+const Nota = db.define('Nota', {   
+    estudianteId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'estudiantes', 
+            key: 'id'
+        }
+    },
+    
+    materia: {
+        type: DataTypes.STRING(100),
         allowNull: false
     },
-    contenido: {
-        type: DataTypes.TEXT,
+   
+    seccion: {
+        type: DataTypes.STRING(50),
         allowNull: false
+    },
+   
+    calificacion: {
+        type: DataTypes.DECIMAL(4, 2),
+        allowNull: false,
+        validate: {
+            min: 0,
+            max: 20 
+        }
     }
 }, {
-    timestamps: true 
+    tableName: 'notas', 
+    timestamps: true    
 });
 
 Estudiante.hasMany(Nota, { foreignKey: 'estudianteId', onDelete: 'CASCADE' });

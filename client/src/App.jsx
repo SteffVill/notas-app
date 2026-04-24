@@ -45,7 +45,14 @@ function App() {
 
       {/* Galería de Botones para confirmar estilos */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <button class="btn btn-primary">Button</button>
+        <button className="btn btn-primary shadow-lg">Primary</button>
+        <button className="btn btn-secondary shadow-lg">Secondary</button>
+        <button className="btn btn-accent shadow-lg">Accent</button>
+        <button className="btn btn-neutral shadow-lg">Neutral</button>
+        <button className="btn btn-info">Info</button>
+        <button className="btn btn-success">Success</button>
+        <button className="btn btn-warning">Warning</button>
+        <button className="btn btn-error">Error</button>
       </div>
 
       {/* Listado de Notas (Si hay) */}

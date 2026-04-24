@@ -20,6 +20,7 @@ const Estudiante = db.define('Estudiante', {
     }
     }, 
     {
+    tableName: 'estudiantes',
     timestamps: true 
 });       
 module.exports = Estudiante;

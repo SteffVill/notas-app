@@ -2,8 +2,8 @@ const Nota = require('../models/Nota');
 
 const crearNota = async (req, res) => {
     try {
-        const { titulo, contenido } = req.body;
-        const nuevaNota = await Nota.create({ titulo, contenido });
+        const { estudianteId, materia, seccion, calificacion } = req.body;
+        const nuevaNota = await Nota.create({ estudianteId, materia, seccion, calificacion });
         res.status(201).json(nuevaNota);
     } catch (error) {
         res.status(500).json({ message: 'Error al crear la nota', error });
@@ -32,12 +32,14 @@ const obtenerNotaPorId = async (req, res) => {
 
 const actualizarNota = async (req, res) => {
     try {
-        const { titulo, contenido } = req.body;
+        const { estudianteId, materia, seccion, calificacion } = req.body;
         const nota = await Nota.findByPk(req.params.id);
         if (!nota) return res.status(404).json({ message: 'Nota no encontrada' });
 
-        nota.titulo = titulo || nota.titulo;
-        nota.contenido = contenido || nota.contenido;
+        nota.estudianteId = estudianteId || nota.estudianteId;
+        nota.materia = materia || nota.materia;
+        nota.seccion = seccion || nota.seccion;
+        nota.calificacion = calificacion || nota.calificacion;
         await nota.save();
 
         res.status(200).json(nota);
