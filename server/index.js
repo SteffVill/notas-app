@@ -17,8 +17,7 @@ const startServer = async () => {
     try {
         await db.authenticate();
         console.log('✅ Conexión a MySQL (XAMPP) establecida.');
-        //await db.sync(); 
-        await db.sync({ alter: true }); 
+        await db.sync();       
         console.log('📊 Tablas sincronizadas.');        
         app.listen(PORT, () => {
             console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
