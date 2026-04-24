@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { crearEstudiante } from '../../services/estudianteService';
+import { crearEstudiante } from '../../services/estudianteServices';
 
 const FormularioEstudiante = ({ onEstudianteCreado }) => {
     const [formData, setFormData] = useState({

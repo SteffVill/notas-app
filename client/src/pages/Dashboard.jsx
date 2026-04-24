@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import FormularioEstudiante from '../components/Estudiantes/FormularioEstudiante';
-import ListaEstudiantes from '../components/Estudiantes/ListaEstudiantes';
+import ListaEstudiantes from '../components/Estudiantes/ListaEstudiante';
 import FormularioNota from '../components/Notas/FormularioNota';
-import { getEstudiantes } from '../services/estudianteService';
+import { getEstudiantes } from '../services/estudianteServices';
 
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState(0);

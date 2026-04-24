@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getEstudiantes } from '../../services/estudianteService';
+import { getEstudiantes } from '../../services/estudianteServices';
 import { crearNota } from '../../services/notaService';
 
 const FormularioNota = ({ onNotaCreada }) => {
