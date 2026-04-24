@@ -33,21 +33,21 @@ const Dashboard = () => {
                     <h1 className="text-4xl font-extrabold text-primary mb-2">Sistema Académico</h1>
                     <p className="text-base-content/60">Gestión de Alumnos y Calificaciones de Secundaria</p>
                 </header>
-                <div className="tabs tabs-boxed justify-center mb-8 bg-base-100 p-2 shadow-sm">
+                <div className="tabs tabs-boxed justify-center mb-8 bg-base-100 p-2 shadow-sm rounded-2xl">
                     <button 
-                        className={`tab tab-lg ${activeTab === 0 ? 'tab-active !bg-primary !text-white' : ''}`}
+                        className={`tab tab-lg rounded-2xl text-primary font-bold ${activeTab === 0 ? 'tab-active !bg-primary !text-white' : ''}`}
                         onClick={() => setActiveTab(0)}
                     >
                         👥 Estudiantes
                     </button>
                     <button 
-                        className={`tab tab-lg ${activeTab === 1 ? 'tab-active !bg-secondary !text-white' : ''}`}
+                        className={`tab tab-lg rounded-2xl text-secondary font-bold ${activeTab === 1 ? 'tab-active !bg-secondary !text-white' : ''}`}
                         onClick={() => setActiveTab(1)}
                     >
                         📝 Cargar Notas
                     </button>
                     <button 
-                        className={`tab tab-lg ${activeTab === 2 ? 'tab-active !bg-accent !text-white' : ''}`}
+                        className={`tab tab-lg rounded-2xl text-success font-bold ${activeTab === 2 ? 'tab-active !bg-accent !text-white' : ''}`}
                         onClick={() => setActiveTab(2)}
                     >
                          📊 Reportes

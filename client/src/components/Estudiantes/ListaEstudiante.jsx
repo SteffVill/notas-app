@@ -1,15 +1,15 @@
 import React from 'react';
-
+import { RiDeleteBinLine } from "react-icons/ri";
 const ListaEstudiantes = ({ estudiantes }) => {
     return (
         <div className="overflow-x-auto w-full shadow-lg rounded-lg border border-base-200 mt-8">
             <table className="table w-full">
                 {/* Cabecera */}
-                <thead className="bg-base-200">
+                <thead className="bg-blue-700/10 text-blue-900">
                     <tr>
                         <th className="text-primary">ID</th>
                         <th>Nombre Completo</th>
-                        <th>Email</th>
+                        <th>Correo Electrónico</th>
                         <th className="text-center">Acciones</th>
                     </tr>
                 </thead>
@@ -29,7 +29,9 @@ const ListaEstudiantes = ({ estudiantes }) => {
                                 </td>
                                 <td>{est.email}</td>
                                 <td className="text-center">
-                                    <button className="btn btn-ghost btn-xs text-error">Eliminar</button>
+                                    <div className="tooltip tooltip-top" data-tip="Eliminar estudiante">
+                                        <button className="btn btn-error btn-xs text-white"><RiDeleteBinLine /></button>
+                                    </div>
                                 </td>
                             </tr>
                         ))

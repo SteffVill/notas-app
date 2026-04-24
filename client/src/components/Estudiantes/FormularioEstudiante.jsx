@@ -38,7 +38,7 @@ const FormularioEstudiante = ({ onEstudianteCreado }) => {
                         </label>
                         <input 
                             type="text" 
-                            placeholder="Ej. Andreina" 
+                            placeholder="Ej. Ana" 
                             className="input input-bordered input-primary w-full" 
                             value={formData.nombre}
                             onChange={(e) => setFormData({...formData, nombre: e.target.value})}
@@ -66,7 +66,7 @@ const FormularioEstudiante = ({ onEstudianteCreado }) => {
                         </label>
                         <input 
                             type="email" 
-                            placeholder="ingeniera@ejemplo.com" 
+                            placeholder="tucorreoaqui@ejemplo.com" 
                             className="input input-bordered input-primary w-full" 
                             value={formData.email}
                             onChange={(e) => setFormData({...formData, email: e.target.value})}
@@ -80,7 +80,7 @@ const FormularioEstudiante = ({ onEstudianteCreado }) => {
                             className={`btn btn-primary w-full ${loading ? 'loading' : ''}`}
                             disabled={loading}
                         >
-                            {loading ? 'Guardando...' : 'Registrar Alumno'}
+                            {loading ? 'Guardando...' : 'Guardar'}
                         </button>
                     </div>
                 </form>
