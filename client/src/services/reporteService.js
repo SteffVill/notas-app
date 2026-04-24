@@ -2,6 +2,7 @@ import * as XLSX from 'xlsx';
 
 export const descargarExcelEstudiante = (estudiante, notas) => {
     const datosExcel = notas.map(n => ({
+        Estudiante: `${estudiante.nombre} ${estudiante.apellido}`,
         Materia: n.materia,
         Sección: n.seccion,
         Calificación: n.calificacion

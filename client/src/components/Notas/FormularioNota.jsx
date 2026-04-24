@@ -12,7 +12,6 @@ const FormularioNota = ({ onNotaCreada }) => {
         calificacion: ''
     });
 
-    // Cargamos los estudiantes al montar el componente para el Select
     useEffect(() => {
         const cargarEstudiantes = async () => {
             try {
@@ -49,7 +48,6 @@ const FormularioNota = ({ onNotaCreada }) => {
                 
                 <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     
-                    {/* Selector de Estudiante */}
                     <div className="form-control col-span-1 md:col-span-2">
                         <label className="label">
                             <span className="label-text font-bold">Seleccionar Estudiante</span>

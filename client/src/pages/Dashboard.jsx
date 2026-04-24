@@ -6,6 +6,7 @@ import { getEstudiantes } from '../services/estudianteServices';
 import { getNotas } from '../services/notaService';
 import CuadriculaReportes from '../components/Notas/CuadriculaReportes';
 const Dashboard = () => {
+    
     const [activeTab, setActiveTab] = useState(0);
     const [estudiantes, setEstudiantes] = useState([]);
     const [notas, setNotas] = useState([]);
@@ -14,6 +15,8 @@ const Dashboard = () => {
         try {
             const { data } = await getEstudiantes();
             setEstudiantes(data);
+            const resNotas = await getNotas();
+            setNotas(resNotas.data);
         } catch (error) {
             console.error("Error al sincronizar datos:", error);
         }

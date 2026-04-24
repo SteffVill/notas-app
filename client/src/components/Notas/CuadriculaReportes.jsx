@@ -2,7 +2,6 @@ import React from 'react';
 import { descargarExcelEstudiante } from '../../services/reporteService';
 
 const CuadriculaReportes = ({ estudiantes, notas }) => {
-    
     const obtenerNotasEstudiante = (id) => notas.filter(n => n.estudianteId === id);
 
     const calcularPromedio = (notasEst) => {
@@ -29,7 +28,7 @@ const CuadriculaReportes = ({ estudiantes, notas }) => {
                             
                             <div className="divider my-1"></div>
                             
-                            <div className="space-y-2 min-h-[100px]">
+                            <div className="space-y-2 min-h-25">
                                 {notasEst.length > 0 ? (
                                     notasEst.map((n, idx) => (
                                         <div key={idx} className="flex justify-between text-sm">
