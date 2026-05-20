@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2'; 
 import { crearEstudiante } from '../../services/estudianteServices';
 import { validarSoloLetras, validarEmail, filtrarSoloLetras } from '../../utils/validaciones';
 
@@ -7,21 +8,24 @@ const FormularioEstudiante = ({ onEstudianteCreado }) => {
     const [errors, setErrors] = useState({ nombre: '', apellido: '', email: '' });
     const [loading, setLoading] = useState(false);
 
- const handleChange = (e) => {
-    const { name, value } = e.target;    
-    let valorProcesado = value;
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        let valorProcesado = value;
+
         if (name === 'nombre' || name === 'apellido') {
             valorProcesado = filtrarSoloLetras(value);
-        }   
-        setFormData({ ...formData, [name]: valorProcesado });
-            if (valorProcesado.trim() === '') {
-                setErrors(prev => ({ ...prev, [name]: 'Este campo es obligatorio' }));
-            } else if (name === 'email' && !validarEmail(valorProcesado)) {
-                setErrors(prev => ({ ...prev, [name]: 'El formato de correo no es válido' }));
-            } else {
-                setErrors(prev => ({ ...prev, [name]: '' }));
         }
-};
+
+        setFormData({ ...formData, [name]: valorProcesado });
+
+        if (valorProcesado.trim() === '') {
+            setErrors(prev => ({ ...prev, [name]: 'Este campo es obligatorio' }));
+        } else if (name === 'email' && !validarEmail(valorProcesado)) {
+            setErrors(prev => ({ ...prev, [name]: 'El formato de correo no es válido' }));
+        } else {
+            setErrors(prev => ({ ...prev, [name]: '' }));
+        }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -50,13 +54,31 @@ const FormularioEstudiante = ({ onEstudianteCreado }) => {
         setLoading(true);
         try {
             await crearEstudiante(formData);
+            
             setFormData({ nombre: '', apellido: '', email: '' });
             setErrors({ nombre: '', apellido: '', email: '' });
+            
             if (onEstudianteCreado) onEstudianteCreado();
-            alert("Estudiante registrado con éxito");
+            
+            Swal.fire({
+                title: '¡Buen trabajo!',
+                text: 'Estudiante registrado con éxito',
+                icon: 'success',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#570df8' 
+            });
+
         } catch (error) {
             console.error("Error al crear estudiante:", error);
-            alert("Hubo un error al registrar al estudiante");
+            
+            
+            Swal.fire({
+                title: '¡Oops...!',
+                text: 'Hubo un error al registrar al estudiante. Por favor, intenta de nuevo.',
+                icon: 'error',
+                confirmButtonText: 'Cerrar',
+                confirmButtonColor: '#f87171'
+            });
         } finally {
             setLoading(false);
         }
